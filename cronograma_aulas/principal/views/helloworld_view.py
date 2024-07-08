@@ -1,7 +1,6 @@
-from django.shortcuts import get_object_or_404, render
-from ..models import Mensagem
+from . import get_object_or_404, render_view, Mensagem
 
 
 def hello_world(request, uuid):
     mensagem = get_object_or_404(Mensagem, id=uuid)
-    return render(request, 'principal/hello_world.html', {'mensagem': mensagem})
+    return render_view(request, 'principal/hello_world.html', {'mensagem': mensagem})
