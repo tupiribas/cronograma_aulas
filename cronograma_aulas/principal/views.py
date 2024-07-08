@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
+from .models import Mensagem
 
-# Create your views here.
+
+def hello_world(request, uuid):
+    mensagem = get_object_or_404(Mensagem, id=uuid)
+    return render(request, 'principal/hello_world.html', {'mensagem': mensagem})
