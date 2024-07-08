@@ -1,27 +1,24 @@
-ARG PYTHON_VERSION=3.12-slim-bullseye
+# Use a imagem base do Python
+FROM python:3.12-slim-bullseye
 
-FROM python:${PYTHON_VERSION}
-
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-
-# install psycopg2 dependencies.
+# Instale dependências do sistema
 RUN apt-get update && apt-get install -y \
     libpq-dev \
     gcc \
     && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /code
-
+# Defina o diretório de trabalho
 WORKDIR /code
 
-COPY requirements.txt /tmp/requirements.txt
-RUN set -ex && \
-    pip install --upgrade pip && \
-    pip install -r /tmp/requirements.txt && \
-    rm -rf /root/.cache/
-COPY . /code
+# Copie o arquivo de requisitos e instale as dependências
+COPY requirements.txt /tmp/
+RUN pip install --upgrade pip && pip install -r /tmp/requirements.txt
 
-EXPOSE 8000
+# Copie o código do projeto
+COPY . /code/
 
-CMD ["gunicorn", "--bind", ":8000", "--workers", "2", "cronograma_aulas.wsgi"]
+# Exponha a porta 8080
+EXPOSE 8080
+
+# Comando para rodar a aplicação
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "cronograma_aulas.wsgi:application"]
