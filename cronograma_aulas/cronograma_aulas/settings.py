@@ -30,8 +30,8 @@ SECRET_KEY = 'django-insecure-n7slo4woy_=@1%@jwk-2-$9!b7#=pjjzbotls!p4m%57f6)50)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+APP_NAME = "cronoaulas"
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'principal.middleware.LogRequestMiddleware', # Registro de Log
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
