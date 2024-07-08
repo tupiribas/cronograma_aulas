@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-n7slo4woy_=@1%@jwk-2-$9!b7#=pjjzbotls!p4m%57f6)50)
 DEBUG = True
 
 APP_NAME = "cronoaulas"
-ALLOWED_HOSTS = ['https://cronoaulas.fly.dev', 'http://localhost', 'http://127.0.0.1']
+ALLOWED_HOSTS = ['https://cronoaulas.fly.dev', 'localhost', '127.0.0.1']
 CSRF_TRUSTED_ORIGINS = ['https://cronoaulas.fly.dev']
 
 # Application definition
