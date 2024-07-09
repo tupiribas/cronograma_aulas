@@ -51,10 +51,10 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'principal.middleware.LogRequestMiddleware', # Registro de Log de acesso ao site
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'principal.middleware.LogRequestMiddleware', # Registro de Log de acesso ao site
 ]
 
 LOGGING = {
@@ -155,6 +155,7 @@ USE_TZ = True
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',  # Backend padrão do Django
+    'principal.Usuario'
 ]
 
 

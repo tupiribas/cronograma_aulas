@@ -1,18 +1,12 @@
+from django.utils.deprecation import MiddlewareMixin
 from .models import AccessLog
 
 
-class LogRequestMiddleware:
-    def __init__(self, get_response):
-        self.get_response = get_response
-
-    def __call__(self, request):
-        # Save access details to the database
-        AccessLog.objects.create(
-            ip_address=request.META.get('REMOTE_ADDR'),
-            path=request.path
-        )
-
-        # Process the request
-        response = self.get_response(request)
-
-        return response
+class LogRequestMiddleware(MiddlewareMixin):
+    def processos_request(self, request):
+        if not request.path.startswith('/static/'):
+            # Save access details to the database
+            AccessLog.objects.create(
+                ip_address=request.META.get('REMOTE_ADDR'),
+                path=request.path
+            )
