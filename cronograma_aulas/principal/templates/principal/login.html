@@ -1,0 +1,12 @@
+{% extends 'principal/base.html' %}
+
+{% block title %}CronoAulas{% endblock %}
+
+{% block content %}
+    <h2>Acesso ao Sistema</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+{% endblock %}

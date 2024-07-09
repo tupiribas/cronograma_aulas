@@ -1,5 +1,7 @@
-from . import render_view
+from . import render, login_required
 
 
-def home(request):
-    return render_view(request, 'principal/home.html')
+@login_required
+def home(request, id_sessao):
+    # Aqui você pode fazer o que for necessário com o UUID
+    return render(request, 'home.html', {'id': id_sessao})

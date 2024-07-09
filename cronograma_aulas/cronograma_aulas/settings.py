@@ -54,7 +54,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'principal.middleware.LogRequestMiddleware', # Registro de Log de acesso ao site
+    'principal.middleware.LogRequestMiddleware',  # Registro de Log de acesso ao site
+    'principal.middleware.LoginRedirectMiddleware'  # Redirecionamento padrão
 ]
 
 LOGGING = {
@@ -158,6 +159,7 @@ AUTHENTICATION_BACKENDS = [
     'principal.Usuario'
 ]
 
+LOGIN_REDIRECT_URL = '/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
